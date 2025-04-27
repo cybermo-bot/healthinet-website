@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 
+
 export default function Navbar() {
   return (
     <nav className="flex items-center justify-between p-6 bg-white shadow-md">
@@ -10,9 +11,12 @@ export default function Navbar() {
         <Link href="#services" className="text-gray-600 hover:text-blue-600">Services</Link>
         <Link href="/about" className="text-gray-600 hover:text-blue-600">About</Link>
       </div>
-      <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-        Talk to HealthiNet
-      </button>
+      <Link href="/chat">
+  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+    Talk to HealthiNet
+  </button>
+</Link>
+
     </nav>
   );
 }
