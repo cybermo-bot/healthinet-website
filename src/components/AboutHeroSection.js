@@ -12,7 +12,7 @@ const AboutHeroSection = () => {
           </h1>
           <p className="text-gray-600 text-lg mb-8">
             Join us on this transforming journey as a new era of healthcare develops
-            and your family's happiness becomes our top concern.
+            and your family&apos;s happiness becomes our top concern.
           </p>
           <a
             href="#"
