@@ -143,13 +143,14 @@ class AIService {
 
   static async callAIAPI(prompt: string): Promise<AIApiResponse> {
     try {
-      const response = await axios.post(API_CONFIG.endpoint, { prompt });
+      const response = await axios.post('/api/ask', { prompt });
       return response.data;
     } catch (error) {
-      console.error('Erreur lors de l\'appel à /api/ask:', error);
-      throw error;
+      console.error('Erreur lors de l\'appel à notre API interne:', error);
+      throw new Error('Erreur lors de l\'appel à notre API interne');
     }
   }
+  
 
   static parseSymptomAnalysisResponse(response: AIApiResponse): any {
     const jsonResponse = typeof response === 'string' ? JSON.parse(response) : response;

@@ -9,18 +9,49 @@ const ChatPage = () => {
 
   const handleSend = async () => {
     if (!input.trim()) return;
-
+  
     const newMessages = [...messages, { text: input, sender: 'user' }];
     setMessages(newMessages);
     setInput('');
-
+  
     try {
       const response = await AIService.analyzeSymptoms(input);
-      setMessages([...newMessages, { text: response?.disclaimer || 'Response received', sender: 'bot' }]);
+  
+      let botMessages = [];
+  
+      if (response?.choices && response.choices[0]?.message?.content) {
+        const content = response.choices[0].message.content;
+  
+        try {
+          // Try to parse the content if it's JSON
+          const parsed = JSON.parse(content);
+  
+          if (parsed.conditions && Array.isArray(parsed.conditions)) {
+            // Map each condition into a separate bot message
+            botMessages = parsed.conditions.map((condition) => ({
+              text: `🩺 **${condition.name}**\n${condition.description}\n🧠 Probabilité: ${condition.probability}`,
+              sender: 'bot',
+            }));
+          } else {
+            botMessages = [{ text: content, sender: 'bot' }];
+          }
+        } catch (error) {
+          // If not parsable JSON, just display as text
+          botMessages = [{ text: content, sender: 'bot' }];
+        }
+      } else {
+        botMessages = [{ text: "Réponse reçue, mais aucun détail trouvé.", sender: 'bot' }];
+      }
+  
+      setMessages([...newMessages, ...botMessages]);
     } catch (error) {
       setMessages([...newMessages, { text: "Erreur lors de la communication avec l'IA.", sender: 'bot' }]);
     }
   };
+  
+  
+  
+  
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-100 p-6">
