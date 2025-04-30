@@ -1,4 +1,4 @@
-"u"use client";
+"use client";
 
 export default function CallToActionSection() {
   return (
