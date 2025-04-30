@@ -20,7 +20,7 @@ export default function ServiceSection() {
       title: "Hospital Section",
       description: "Hospital management: staff, beds, schedules, and emergencies.",
       icon: "🏥",
-      link: "http://localhost/hospital"
+      link: "http://localhost/hospital_project/"
     },
     {
       title: "AI Symptom Checker",
