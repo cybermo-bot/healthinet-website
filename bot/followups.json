@@ -1,0 +1,21 @@
+{
+    "headache": [
+      "Do you feel nauseous?",
+      "Are you sensitive to light?",
+      "Did it come on suddenly?",
+      "Do you have neck stiffness?"
+    ],
+    "cough": [
+      "Do you have a fever?",
+      "Is it dry or productive?",
+      "Any chest pain?",
+      "Do you smoke?"
+    ],
+    "chest pain": [
+      "Is it sharp, dull, or burning?",
+      "Does it spread to your arm?",
+      "Does it worsen with exertion?",
+      "Any shortness of breath?"
+    ]
+  }
+  
